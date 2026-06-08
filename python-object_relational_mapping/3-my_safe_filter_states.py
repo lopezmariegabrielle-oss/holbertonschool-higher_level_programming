@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Filtre les états par argument."""
+"""Filtre les états par argument de manière sécurisée."""
 import sys
 import MySQLdb
 
@@ -7,7 +7,7 @@ if __name__ == "__main__":
     mysql_username = sys.argv[1]
     mysql_password = sys.argv[2]
     database_name = sys.argv[3]
-    state = sys.argv[4]
+    state_name_searched = sys.argv[4]
 
     db = MySQLdb.connect(
         host="localhost",
@@ -18,8 +18,8 @@ if __name__ == "__main__":
     )
 
     cur = db.cursor()
-    cur.execute("SELECT * FROM states WHERE name = %s ORDER BY id ASC;", (state,))
-    rows = cur.fetchall()
+    query = "SELECT * FROM states WHERE name = %s ORDER BY id ASC"
+    cur.execute(query, (state_name_searched,))
 
     for row in rows:
         print(row)
