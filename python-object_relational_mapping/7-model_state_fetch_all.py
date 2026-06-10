@@ -19,10 +19,8 @@ if __name__ == "__main__":
     session = Session()
 
     states = session.query(State).order_by(State.id).all()
-    if len(states) == 0:
-        print("Aucan état trouvé")
-    else:
-        for state in states:
-            print("{}: {}".format(state.id, state.name))
+
+    for state in states:
+        print("{}: {}".format(state.id, state.name))
 
     session.close()
