@@ -9,10 +9,11 @@ from model_state import Base, State
 if __name__ == "__main__":
     username = sys.argv[1]
     password = sys.argv[2]
-    detabase_name = sys.argv[3]
+    database_name = sys.argv[3]
     engine = create_engine(
-        f"mysql+pymysql://{username}:{password}"
-        f"@localhost:3306/{detabase_name}"
+        'mysql+mysqldb://{}:{}@localhost:3306/{}'
+        .format(username, password, database_name),
+        pool_pre_ping=True
     )
 
     Session = sessionmaker(bind=engine)
@@ -25,6 +26,6 @@ if __name__ == "__main__":
             .all()
         )
     for etat in etats_avec_a:
-        print(f"{etat.id}: {etat.name}")
+        print("{}: {}".format(etat.id, etat.name))
 
     session.close()
