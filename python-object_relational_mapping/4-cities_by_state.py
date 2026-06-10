@@ -7,7 +7,6 @@ if __name__ == "__main__":
     mysql_username = sys.argv[1]
     mysql_password = sys.argv[2]
     database_name = sys.argv[3]
-    state_name_searched = sys.argv[4]
 
     db = MySQLdb.connect(
         host="localhost",
