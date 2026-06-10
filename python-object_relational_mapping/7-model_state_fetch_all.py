@@ -8,10 +8,10 @@ from sqlalchemy.orm import sessionmaker
 if __name__ == "__main__":
     username = sys.argv[1]
     password = sys.argv[2]
-    detabase_name = sys.argv[3]
+    database_name = sys.argv[3]
     engine = create_engine(
-        f"mysql+pymysql://{username}{password}"
-        f"@localhost:3306/{detabase_name}"
+        f"mysql+mysql://{username}:{password}"
+        f"@localhost:3306/{database_name}"
     )
 
     Session = sessionmaker(bind=engine)
