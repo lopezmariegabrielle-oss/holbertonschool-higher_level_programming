@@ -10,8 +10,9 @@ if __name__ == "__main__":
     password = sys.argv[2]
     detabase_name = sys.argv[3]
     engine = create_engine(
-        f"mysql+pymysql://{username}:{password}"
-        f"@localhost:3306/{detabase_name}"
+        'mysql+mysqldb://{}:{}@localhost:3306/{}'
+        .format(username, password, database_name),
+        pool_pre_ping=True
     )
 
     Session = sessionmaker(bind=engine)
@@ -21,6 +22,6 @@ if __name__ == "__main__":
     if premier_etat is None:
         print("Nothing")
     else:
-        print(f"{premier_etat.id}: {premier_etat.name}")
+        print("{}: {}".format(premier_etat.id, premier_etat.name))
 
     session.close()
