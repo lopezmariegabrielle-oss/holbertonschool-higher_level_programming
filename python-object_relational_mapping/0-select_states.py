@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+"""Lists all states from the database hbtn_0e_0_usa"""
 import sys
 import MySQLdb
 
@@ -8,7 +9,7 @@ if __name__ == "__main__":
     database_name = sys.argv[3]
 
     db = MySQLdb.connect(
-        host="127.0.0.1",
+        host="localhost",
         port=3306,
         user=mysql_username,
         passwd=mysql_password,
