@@ -10,8 +10,9 @@ if __name__ == "__main__":
     password = sys.argv[2]
     database_name = sys.argv[3]
     engine = create_engine(
-        f"mysql+mysql://{username}:{password}"
-        f"@localhost:3306/{database_name}"
+        'mysql+mysqldb://{}:{}@localhost:3306/{}'
+        .format(username, password, database_name),
+        pool_pre_ping=True
     )
 
     Session = sessionmaker(bind=engine)
@@ -22,6 +23,6 @@ if __name__ == "__main__":
         print("Aucan état trouvé")
     else:
         for state in states:
-            print(f"{state.id}: {state.name}")
+            print("{}: {}".format(state.id, state.name))
 
     session.close()
