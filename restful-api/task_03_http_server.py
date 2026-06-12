@@ -38,7 +38,7 @@ class SimpleAPIHandler(BaseHTTPRequestHandler):
             self.send_response(404)
             self.send_header('Content-type', 'text/plain; charset=utf-8')
             self.end_headers()
-            self.wfile.write("PNot Found".encode('utf-8'))
+            self.wfile.write("Not Found".encode('utf-8'))
 
 
 def run_server():
