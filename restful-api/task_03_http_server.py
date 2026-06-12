@@ -9,8 +9,7 @@ class SimpleAPIHandler(BaseHTTPRequestHandler):
             self.send_response(200)
             self.send_header('Content-type', 'text/plain; charset=utf-8')
             self.end_headers()
-            self.wfile.write("Hello, this is a simple API!"
-                             .encode('utf-8'))
+            self.wfile.write("Hello, this is a simple API!".encode('utf-8'))
 
         elif self.path == '/data':
             self.send_response(200)
@@ -39,8 +38,7 @@ class SimpleAPIHandler(BaseHTTPRequestHandler):
             self.send_response(404)
             self.send_header('Content-type', 'text/plain; charset=utf-8')
             self.end_headers()
-            self.wfile.write("PNot Found"
-                             .encode('utf-8'))
+            self.wfile.write("PNot Found".encode('utf-8'))
 
 
 def run_server():
