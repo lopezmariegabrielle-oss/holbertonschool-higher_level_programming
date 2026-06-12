@@ -39,7 +39,7 @@ class SimpleAPIHandler(BaseHTTPRequestHandler):
             self.send_response(404)
             self.send_header('Content-type', 'text/plain; charset=utf-8')
             self.end_headers()
-            self.wfile.write("Point de terminaison introuvable"
+            self.wfile.write("PNot Found"
                              .encode('utf-8'))
 
 
