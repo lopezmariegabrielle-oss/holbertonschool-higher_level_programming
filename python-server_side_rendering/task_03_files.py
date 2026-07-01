@@ -38,19 +38,19 @@ def display_products():
             return render_template(
                 'product_display.html', error="Data file not found"
             )
-        if product_id:
-            try:
-                target_id = int(product_id)
-                products = [p for p in products if p['id'] == target_id]
+    if product_id:
+        try:
+            target_id = int(product_id)
+            products = [p for p in products if p['id'] == target_id]
         
-                if not products:
-                    return render_template(
-                        'product_display.html', error="Product not found"
-                    )
-            except ValueError:
+            if not products:
                 return render_template(
                     'product_display.html', error="Product not found"
                 )
+        except ValueError:
+            return render_template(
+                'product_display.html', error="Product not found"
+            )
     return render_template('product_display.html', products=products)
 
 
