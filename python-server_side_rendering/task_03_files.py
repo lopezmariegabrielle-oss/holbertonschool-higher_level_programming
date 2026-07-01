@@ -8,6 +8,8 @@ app = Flask(__name__)
 def display_products():
     source = request.args.get('source')
     product_id = request.args.get('id')
+
+    products = []
     
     if source not in ['json', 'csv']:
         return render_template('product_display.html', error="Wrong source")
